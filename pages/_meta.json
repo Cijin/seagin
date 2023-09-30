@@ -1,7 +1,8 @@
 {
-  "index": "Home",
-  "log": "Unstructured Logs",
+  "index": "Who am I?",
+  "log": "Logs",
   "daysOfCode": "Days of Code",
-  "projects": "Directory of Projects",
-  "daysOfTraining": "Days of Training"
+  "projects": "Projects",
+  "daysOfTraining": "Days of Training",
+  "contact": "Contact"
 }
