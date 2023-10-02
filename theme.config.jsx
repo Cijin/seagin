@@ -4,7 +4,11 @@ export default {
       titleTemplate: '%s – Seagin'
     }
   },
-  logo: <strong>Sea Gin</strong>,
+  logo: (
+    <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
+      SeaGin
+    </span>
+  ),
   project: {
     link: 'https://github.com/cijin/seagin'
   },
