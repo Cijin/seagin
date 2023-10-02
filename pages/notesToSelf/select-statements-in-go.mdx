@@ -1,0 +1,67 @@
+# Select
+To be candid I never really understood what `select` statements did. I understood that they handled values returned from 
+channels similar to a `switch` statement, minus the channels.
+
+It wasn't until I went through the [Select chapter](https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/select) of TDD with go, that I really understood what they did.
+
+## Understaanding select
+What helped me understand was the the problem being solved in the chapter so I'll use snippets of those as my examples.
+
+The question was the race to url using `http.GET` and return the faster one. Let's look at the initial approach
+
+Version 1:
+```go
+func Racer(a, b string) (winner string) {
+	startA := time.Now()
+	http.Get(a)
+	aDuration := time.Since(startA)
+
+	startB := time.Now()
+	http.Get(b)
+	bDuration := time.Since(startB)
+
+	if aDuration < bDuration {
+		return a
+	}
+
+	return b
+}
+```
+
+This was the initial solution, this works but we can leverage concurrency in Go to make this more interesting and faster.
+
+Version 2:
+```go
+func Racer(a, b string) (winner string) {
+	select {
+	case <-ping(a):
+		return a
+	case <-ping(b):
+		return b
+	}
+}
+
+func ping(url string) chan struct{} {
+	ch := make(chan struct{})
+	go func() {
+		http.Get(url)
+		close(ch)
+	}()
+	return ch
+}
+```
+
+You can wait for values to be sent to a channel with `myVar := <-ch`. This is a blocking call, as you're waiting for a 
+value. This bit I was clear about.
+What select lets you do is wait on multiple channels.
+
+These two statements, made me go "ah ha!". 
+
+Understanding that `select` helps synchronise processes, for multiple channels was the missing piece of the puzzle for me.
+
+
+## Aside:
+* Always `make` channels, as go initilizes types to it's zero value when using `var name type`. The zero value for channels
+  is `nil` and you cannot send to `nil` channles. So the process will forever block.
+* If you **do not** need to send values over channels use, `struct{}` as it consumes the least amount of memory in terms 
+  of allocation.

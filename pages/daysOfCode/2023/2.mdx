@@ -1,0 +1,16 @@
+# 2nd Octobber
+
+## Parsing program statements
+
+Started with parsing statements, it's made me appreciate all programming languages, 
+and what it takes to make them work.
+
+So far, the focus is to be able to parse simple statements like `let x = 5`. Today, the parser 
+was updated to be able to parse upto the `=` and ignore everything after for now. As the 
+language needs to allow statements like `let y = 5 * 5` and even function statements like 
+`let z = add(x + y)`.
+
+The parser also, keeps track of errors in a very basic way. With a very primitive stack trace 
+that you can use to see where the error first originated.
+
+[Commit: 7b597aa](https://github.com/Cijin/go-interpreter/commit/7b597aab7a3678ca3ad7bf553271df31484e87fc)

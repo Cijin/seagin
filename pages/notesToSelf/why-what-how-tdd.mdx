@@ -1,0 +1,40 @@
+## The Why
+TDD just works, it's simple to implement. Gives you confidence on the code you are writing. It can be a great form of 
+documentation. Moreover on complex problems it can help you get started by breaking problem down.
+
+## Why now?
+It's never to late start including tests. Regardless of the fact that you are scaling your operations, encountering a lot of
+bugs, lacking documentation, or starting a tight deadline feature, etc. 
+From my humble experience, any time you save by not writing tests is offset by fixing bugs later on, most times more time
+that it would take to write the test. Plus, ain't nothing more scarier than pushing a change and wondering if something broke
+while your fixing a bug.
+
+## What?
+TDD, is just an iterative process of building software.
+
+## How?
+This is just how I do it, I'm always open to make it better.
+  1. Start with the simplest iteration of the function. Ex:
+  ```js
+  // testing a function that checks for prime
+  test('should true for 2', () => {
+    const got = isPrime(2)
+    
+    expect(got).to.be(true)
+  })
+  ```
+
+  2. Make the test pass, keep it simple and focus on quick wins. Ex:
+  ```js
+  // function
+  function isPrime(num) {
+    if (num === 2) return true
+    return false
+  }
+  
+  // this might seem trivial and unnecessary but will get you going
+  ```
+
+  3. Refactor (if neccessary) 
+
+  4. Go to step 1
