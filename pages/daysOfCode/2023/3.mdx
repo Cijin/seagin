@@ -1,0 +1,14 @@
+# 3rd Octobber
+
+## Parsing `return` statements
+
+This was much easier than parsing `let` statement. As `return` statements only consists 
+of a token type (return) and an expression.
+
+Just as for `let`, parsing the expression will be done later. So it's skipped over when
+parsing the expression.
+
+This finishes parsing over expressions in the `monkey` language that the parser is being
+created for. As there are only two expressions `let` & `return`
+
+[Commit:1647119](https://github.com/Cijin/go-interpreter/commit/1647119eb0e3920aec7d209308546684f5f6d032)
