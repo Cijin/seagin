@@ -1,0 +1,25 @@
+# 4th Octobber
+
+## Parsing Expressions
+
+Turns our parsing expressions is much different than parsing statements. Thank God! I was like, 
+do I have to go through each possible combination of expression to construct an ast.
+
+
+Challenges of parsing expressions:
+  * Operator precedence, `5 * 5 + 10`
+  * Prefix with Infix Operators, `-5 -10`
+  * Parntheses as an Operator, `5 * (add(2, 3) + 10)`
+
+Since, smart people have figured this already, we are going to be using the
+(Pratt Parsing)[https://en.wikipedia.org/wiki/Operator-precedence_parser] to parse 
+expressions.
+
+Also, went through some terminology like:
+
+  * Prefix operator `--5`
+  * Postfix operator `5++`
+  * Infix operator `8 * 5`o
+
+There were no code updates today. In the next sessoin, I'm going to be preparing 
+the AST.
