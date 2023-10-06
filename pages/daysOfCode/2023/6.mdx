@@ -1,0 +1,29 @@
+# 6th Octobber
+
+## Expression Statements Helper
+
+Added a wrapper for statements with solely a single expression. Ex: `x + 10;`
+
+
+## Adding String() to Node
+
+Added a method `String` to the Node to make it easy to debug and compare them with 
+other AST nodes.
+
+## Implementing the Pratt parser (part 1)
+
+The main idea(s) behind the Pratt Parser:
+ * Assosiation of paring functions with token type
+ * When a token is encountered the appropriate parsing function is called to return the AST Node
+ * Each token can have upto two parsing functions. Depending on wether the token is found in the 
+   prefix or infix position
+
+This is what the association above looks like
+```go
+type (
+  prefixParseFn func() ast.Expression
+  infixParseFn func(ast.Expression) ast.Expression
+)
+```
+
+[Commit:36359f1](https://github.com/Cijin/go-interpreter/commit/36359f13bef13420898e32874c896619f1ef1e16)
