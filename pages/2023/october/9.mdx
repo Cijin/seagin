@@ -1,0 +1,22 @@
+# 6th Octobber
+
+## Implementing the Pratt parser: Identifiers
+
+The main idea behind the pratt parser is the association of token types with parsing functions.
+In the last session, the types for such functions were added. Today, the parser was extended to
+include prefix & infix function maps.
+ 
+### Identifiers
+
+The simplest identifier in the monkey programming language is:
+
+`foobar;`
+
+So this was the starting point, and extended the parser to be able to parse this 
+expression. This required adding a `parseExpressionStatement` &  `parseExpression` methods to the parser.
+
+The `parseExpression` method took a priority, which is a `enum` of precedences amongst the operators in
+the language. Although the precedence is not completely implemented, it is a good start to have it in place.
+
+
+[Commit:4a81b1c](https://github.com/Cijin/go-interpreter/commit/4a81b1c89e287bcf39da3434f047048d5e563c76)
