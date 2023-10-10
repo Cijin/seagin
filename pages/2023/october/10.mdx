@@ -1,0 +1,15 @@
+# 10th Octobber
+
+## Implementing the Pratt parser: Integer Literals
+
+The simplest integer literal in the monkey programming language is:
+
+`5;`
+
+So this was the starting point, and extended the parser to be able to parse this 
+expression. This required adding a `parseIntegerLiteral` methods to the parser.
+
+This was very similar to adding the parser for an identifier, the only difference being
+the value was of type `int64` instead of a string.
+
+[Commit:7a346d0](https://github.com/Cijin/go-interpreter/commit/7a346d0e6d797cd457f5e49422ade50f9e292d77)
