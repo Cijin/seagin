@@ -1,0 +1,110 @@
+# 13th Octobber
+
+## Implementing the Pratt parser: Prefix & Infix Expressions
+
+This turned out to be quite fun. I assumed it would be a bit more complicated 
+than it turned out to be.
+
+### Prefix Expressions
+
+Prefix expressions take the following form `<prefix operator><expression>`, which is 
+quite obvious from the name.
+
+This is what it looks like:
+
+```go
+type PrefixExpression struct {
+  Token token.Token // prefix token
+  Operator string
+  Right Expression  // operand
+}
+```
+
+The `String()` method for the ast of a prefix expression is slightly different from 
+the others so far. This is done so as to be able see which operand belongs to which operator.
+
+```go
+func (pe *PrefixExpression) String() string {
+  var out bytes.Buffer
+
+  out.WriteString("(")
+  out.WriteString(pe.Operator)
+  out.WriteString(pe.Right.String())
+  out.WriteString(")")
+
+  return out.String()
+}
+```
+
+### Precedence
+
+An enum of operator priority  is defined. Ex: `*` has a higher priority compared 
+to `+`.
+
+This will be more useful in the next section when working with infix expressions.
+
+### Infix Expression
+
+Infix or Binary expression is of the form `<expression><operator><expression>`. So the type of 
+an infix expression has a `Left Expression` along with the `Right`.
+
+Also, the `String()` method for `InfixExpression` is slightly differnt from the `PrefixExpression`.
+
+```go
+func (ie *InfixExpression) String() string {
+  var out bytes.Buffer
+
+  out.WriteString("(")
+  out.WriteString(ie.Left.String())
+  out.WriteString(" " + ie.Operator + " ")
+  out.WriteString(ie.Right.String())
+  out.WriteString(")")
+
+  return out.String()
+}
+
+```
+
+Parsing an infix expression is not too differnt from the prefix. The `parseExpression` method 
+only required a slight update to be able to generate the correct ast, thanks to recursion. This 
+is what the update looks like:
+
+```go
+// parser.go
+
+func (p *Parser) parseExpression(precedence int) ast.Expression {
+  [...]
+
+  for !p.peedTokenIs(token.SEMICOLON) && precedence < p.peekPrecendence() {
+    infix := p.infixParseFns[p.peekToken.Type] // these are registered when instantiating the Lexer
+    if infix == nil {
+      return leftExp
+    }
+
+    p.nextToken()
+
+    leftExp = infix(leftExp)
+  }
+
+  [...]
+}
+```
+
+Now the monkey programming language can parse expressions like these:
+```go
+		{
+			"5 < 4 != 3 > 4", // input
+			"((5 < 4) != (3 > 4))", // AST
+		},
+		{
+			"3 + 4 * 5 == 3 * 1 + 4 * 5", // input
+			"((3 + (4 * 5)) == ((3 * 1) + (4 * 5)))", // AST
+		},
+
+```
+
+That felt good :D. There are still a couple of `Todo`s in the code. But those 
+will be tackled soon.
+
+
+[Commit:18d368f](https://github.com/Cijin/go-interpreter/commit/18d368f1d4db58b4ea1f35f0e37acd34455f6258)
