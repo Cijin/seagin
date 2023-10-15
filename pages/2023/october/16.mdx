@@ -1,0 +1,27 @@
+# 16th Octobber
+
+## Implementing the Pratt parser: Boolean Literals & Grouped Expressions
+
+### Boolean
+
+These are not any different from parsing integer literal, so it was fairly straightforward. 
+Being able to parse boolean literals meant the tests for prefix & infix expressions could be 
+now extended to include booleans.
+
+
+### Grouped Literals
+
+Ex: `5 * (2 + 2);`
+
+This was also surprisingly easy, thanks to the way the parser is structured. All that 
+was needed doing was defining a prser when a paranthesis was encountered. All the parser 
+did was peek forward to the next token and the `parseExpression` method did the rest. Without the 
+parenthesis it's just an infix statement. Once you got the statement back, all you had to do 
+was ensure and peek the closing paren `(`.
+
+The concept of assosiating token types to functions makes things really easy to extend. I was under 
+the impression that this would be a long section, quite shocked when it was done in a few lines. Quite 
+incredible.
+
+
+[Commit:4ac84d1](https://github.com/Cijin/go-interpreter/commit/4ac84d181e437584ecfd75779a8495223eddc735)
