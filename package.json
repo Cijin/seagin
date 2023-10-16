@@ -6,6 +6,7 @@
     "next": "next dev"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.1.1",
     "next": "^13.5.3",
     "nextra": "^2.13.1",
     "nextra-theme-docs": "^2.13.1",
