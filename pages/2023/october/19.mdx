@@ -1,0 +1,41 @@
+# 19th Octobber
+
+## Implementing the Pratt parser: Function literals
+
+Function literals look like this:
+```
+fn(x, y) {
+  return x + y;
+}
+```
+
+The abstract structure of a function looks like this:
+```
+fn <parameter> <block statement>
+```
+Having this structure is a good starting point from defining the type to parsing 
+function literals.
+
+Although, params are new they are just identifiers seperated by command and surrounded 
+by a parantheses. They can also be empty.
+
+There are couple of things to note, functions can return a function inside the body.
+```
+fn() {
+  return fn(x, y) { return x > y; };
+}
+```
+
+Also, using a function literal as an argument when calling another function is also possible:
+```
+myFunc(x, y, fn(x, y) { return x > y; });
+```
+
+These seemed a bit daunting when I saw them first and expected parsing function literals 
+to be a lot more complicated that parsing `if-else` expressions. Turned out not to be 
+the case as once parsing function literals as expressions and provide a parsing method 
+to parse them, the rest just works. In all honesty it felt amazing.
+
+This one was a lot of fun.
+
+[Commit:d04df48](https://github.com/Cijin/go-interpreter/commit/d04df4888911721978b4dece47679a4848ada7c7)
