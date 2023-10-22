@@ -1,0 +1,33 @@
+# 18th Octobber
+
+## Implementing the Pratt parser: If Expression
+
+If expressions in monkey programming language looks just like any other. Ex:
+
+```
+if (x > y) {
+  return x;
+} else {
+  return y;
+}
+```
+Or
+```
+if (x > y) {
+  return x;
+}
+```
+
+`if-else` conditionals in monkey are expressions, i.e. they produce a value. The 
+return is implied to be the last line if not explicitly returned. Although, it's 
+obvious but for sake of clarity:
+
+`if (<condition>) <consequence> else <alternative>`
+
+Consuquence & alternative's are block statements so they get parsed like regular 
+statements.
+
+Once the structured is established, the rest is fairly simple as it does not vary 
+vastly from the rest of the program.
+
+[Commit:e47d5c8](https://github.com/Cijin/go-interpreter/commit/e47d5c83a6e2f7aa7961c295355deb1f9c3361ea)
