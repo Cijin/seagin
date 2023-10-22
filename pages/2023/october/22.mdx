@@ -1,0 +1,33 @@
+# 22nd Octobber
+
+## Implementing the Pratt parser: Call expressions
+
+This one too, much to my surprise was both fun and a lot easier than I thought 
+it would be. Consider the structure:
+
+```
+<expression>(<comma seperated expressions>)
+```
+
+Turns out part of it is already done as the `expression` here is just an identifier 
+and the parser already knows how to parse those. I did guess something wrong, I thought 
+we'd be registering a prefix parsing `func` but not the case (partly). As identifiers already 
+have a registered prefix, that mean't only the thing that was not registered is the 
+comma seperated expression parsing, which requires an infix parser.
+
+Precedence map was updated to include `(` which has the highest precedence as it's a call 
+expression.
+
+## Off by one errors
+
+Once the tests were completed I noticed a few of them were failing. I had read about 
+parsers being susceptible to off by one errors, it's a whole different thing when you face 
+them and forget about it. Luckily, it din take long to figure out that the parser was just 
+not being updated to the right position. After I realized the first one, the other two were 
+a lot easier to catch and fix.
+
+
+Parsing is nearly complete, there a few `Todo`'s to be removed from the code. Then I can move 
+on to evaluation.
+
+[Commit:52de1dd](https://github.com/Cijin/go-interpreter/commit/52de1dd7f5ced0fe2879c49d5dc9574423bb4167)
