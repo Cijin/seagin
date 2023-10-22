@@ -1,0 +1,64 @@
+# 23nd October
+
+## Finishing the parser
+
+The parser is complete :). All there was left to do was to remove the todo's from 
+the `parseLetStatement` & `parseReturnStatement` method. As at the time of parsing 
+`let` & `return` statements there was no support for expressions.
+
+The `repl` was updated to now return the parsed output of the program. So as is, 
+it returns the ast for the monkey programming language, which I feel is awesome. 
+You can see glimplses of how [tree-sitter](https://tree-sitter.github.io/tree-sitter/) could work. 
+
+The amount of learning so far has been amazing and I understand what the terms `expressions` &
+`statements` mean. Also, realized that I've been using those two terms incorrectly.
+
+These are some of the output of the code:
+
+### Let statements
+```
+
+Welcome to monkey v0.0.0
+Press ctrl-d to exit.
+
+>> let x = 1;
+let x = 1;
+
+>> let y = 1 * 2 * 3 * 4 * 5
+let y = ((((1 * 2) * 3) * 4) * 5);
+
+>> let z = 2 / 3 + 1 - 1
+let z = (((2 / 3) + 1) - 1);
+
+>>
+
+```
+
+### Function Literal & Calls
+```
+>> fn() { return fn(x, y) { return x + y }}
+fn()return fn(x, y)return (x + y);; // for some reason it's printing two ';', will fix it later
+>>
+```
+
+### Errors
+```
+>> let a + b * 3
+            __,__
+   .--.  .-"     "-.  .--.
+  / .. \/  .-. .-.  \/ .. \
+ | |  '|  /   Y   \  |'  | |
+ | \   \  \ 0 | 0 /  /   / |
+  \ '- ,\.-"""""""-./, -' /
+   ''-' /_   ^ ^   _\ '-''
+       |  \._   _./  |
+       \   \ '~' /   /
+        '._ '-=-' _.'
+           '-----'
+Parser errors:
+        expected next token to be =, got +
+        no prefix parse function for +
+>>
+```
+
+[Commit:8a581a9](https://github.com/Cijin/go-interpreter/commit/8a581a9addbfa1397f547f53ca911b021261d114)
