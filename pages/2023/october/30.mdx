@@ -1,0 +1,53 @@
+# 30th October
+
+## Evaluating Symbols
+
+Took a break once the parser was finished, getting back to it. Today was the first 
+day I made some progress since finishing the parser.
+
+
+Made a couple of small incremental additions to be able to evaluate booleans, integers, 
+and `null`.
+
+### Tree Walking Interpreter
+
+You can read about the other approaches in the book. Tree walking interepreter is the 
+easiest to implement & for the sake of learning that's the one we are going with.
+
+A tree walking interpreter takes the AST from the parser and intereprets it "on the fly", 
+without preprocessing or compliation.
+
+### Object Representation
+
+We are representing all values as objects that we define. There will be no native types. 
+Again, as it's easier and performance is not really a concern right now.
+
+With that, we implement the foundation for our object system. We define `Object`, `Integer`, 
+`Boolean` and `Null`.
+
+### Garbage Collection
+
+
+The book does not implement any garbage collection but I would like to know how it works. 
+So once I'm finished with the interpreter I will extend the interpreter to support garbage 
+collection.
+
+### Evaluating Expressions
+
+With the data types defined, we can evaluate literal expressions and map them to their 
+representation in the monkey programming language. This is quite easy and straightforward.
+
+### Evaluating Prefix Expressions
+
+Once the above is complete, we can then move on to evaluating prefix expressions `!` & `-`. 
+This is where I'm starting to see how minute decisions regarding the behavior of a prgramming 
+language are made. For example, in the monkey programming language `!5` equates to `false`. 
+As we are defining `5` to be a truthy value, where this would throw an error in golang.
+
+For evaluating prefix expressions, we first evaluate the right. This means we can 
+recursively evaluate expressions like `!!true`. Once, the right is evaluated, based 
+on the operator `!` or `-`, the appropriate object is returned. If it's a `!` operator 
+a boolean is returned, whereas for `-` operator we verify if the operand is an integer 
+and return the negated integer.
+
+[Commit:05142d3](https://github.com/Cijin/go-interpreter/commit/05142d3be0c7edc6af9bb513c08c08e0b3d4eb70)
