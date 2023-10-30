@@ -1,0 +1,25 @@
+# 31th October
+
+## Evaluating Infix Expressions
+
+This one is fairly simple, as we can use the underlying methods of the language 
+we are writing monkey in, in this case Golang.
+
+There are two sets of infix operators:
+
+1. Arithmatic Operators
+
+These are `+`, `-`, `/`, `*`. This implies that the reuturned object type should 
+be an integer.
+
+2. Boolean Operators
+
+These are `>`, `<`, `!=`, `==`. The returned object type should be of type boolean.
+
+Both 1 & 2 deal with integer operands. That meant having to support `!=` & `==` for 
+boolean operands. Which is fairly straight forward as interfaces can be compared to 
+each other in Go.
+
+That completes evaluating expressions in monkey. The next step is Conditionals! :)
+
+[Commit:f5568ee](https://github.com/Cijin/go-interpreter/commit/f5568ee2892b8ab46bb4dd8f8be3215aa8f08436)
