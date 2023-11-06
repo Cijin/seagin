@@ -1,0 +1,89 @@
+# 6th November
+
+## Evaluating `if` Expression
+
+On encountering an `if` expression during execution the program had to decide how to make 
+make sense of the conditional; i.e.:
+
+* The conditional should always evaluate to boolean
+* Conditional can be evaluated to be truthy or falsy
+
+The hard part is making the decision, the rest is quite straight forward as we are 
+simply executing statements withing the block.
+
+We went with the second one. This simple function can help explain how conditionals 
+are evaluated.
+
+```go
+func isTruthy(condition object.Object) bool {
+	switch condition {
+	case TRUE:
+		return true
+	case FALSE:
+		return false
+	case NULL:
+		return false
+	default:
+		return true
+	}
+}
+```
+
+As you can see, everything that is not `FALSE` or `NULL` is considered truthy.
+
+### Block Statements
+
+Based on the value the expression is evaluated to, it's easy to make a decision 
+wether the `Consequence` needs to be evaluated or the `Alternative`. If there is no 
+alternative the `if` expression evaluation returns a `NULL` object. 
+
+
+## Evaluating `return` Statements
+
+Like most programming languages that i'm aware of, encountering a return value 
+halts execution of the block and returns any value if present in the statement. 
+
+So, when a return statement was encountered the value gets unwrapped and `return`ed 
+when the statement evalution encounters one.
+
+This works fine for statements like:
+
+```
+return 2 * 5;
+
+// or
+
+if (true) {
+  return 10;
+} else {
+  return 5;
+}
+
+// also halts execution for the block
+return 2 * 5; 
+x = 44; // unreachable
+```
+
+Since, the generic `evalStatements` method was used for evaluation of the program 
+statements and the block statement. There was an issue, there was no order for control 
+flow when a return statement was encountered within a block. Ex:
+
+```
+if (10 > 1) {
+  if (10 > 1) {
+	  return 10 // expected value
+  }
+  return 2 // recieved
+}
+```
+
+This is easy to see because when `return 10` is encountered by the evaluator the 
+value gets unrwapped and returned. This is the expected behavior, but it does not escape 
+the outermost block. So execution continues to the `return 2` statement which gets `return`ed 
+instead.
+
+An easy fix for this was to seperate the execution of `blockStatements` and `program` 
+into seperate methods over the generic `evalStatements`. Also, block statements will 
+not unwrap the `return` statement to it's value. That is handled by the program.
+
+[Commit:7918890](https://github.com/Cijin/go-interpreter/commit/7918890741f306bc2b02509b8fa8b9c2f110992f)
