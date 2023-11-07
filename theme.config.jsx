@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import logoSvg from "./public/seagin.svg";
+
 export default {
   useNextSeoProps() {
     return {
@@ -5,9 +8,14 @@ export default {
     }
   },
   logo: (
-    <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
-      SeaGin
-    </span>
+    <div>
+      <Image
+        width={150}
+        height={150}
+        priority
+        src={logoSvg}
+      />
+    </div>
   ),
   project: {
     link: 'https://github.com/cijin/seagin'
