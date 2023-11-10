@@ -1,0 +1,32 @@
+# 10th November
+
+## Error Handling
+
+Error handling is quite similar to how `return` statements were handled. If you think 
+about it, when a `return` statement is encountered, evaluation stops and `return`s the value 
+that has been evaluated from the statements till that point. Encountering an `error` 
+is not very different. When an error is encountered you stop evaluation and `return` 
+the value, just that in this case it's a `object` of type `error`. Instead of `boolean` 
+or `integer` etc.
+
+Kinda like how go handles errors, it's just a value. It's a polarizing topic, but I like 
+that an `error` is just a value and you can decide what you want to do with it.
+
+
+[Commit:b981295](https://github.com/Cijin/go-interpreter/commit/b9812956002c508fec9fbba3f14921e9be47cafc)
+
+
+## Binding Identifiers & Enviornment
+
+Currently, the evaluator does not know what to do when a let statement is encountered, 
+or for that matter what to do when an identifier is come across, either.
+
+To be able to handle identifiers we need to store the values assosiated with them and 
+be able to get these values later on. So we define an `Enviornment`, that wraps a Hash 
+map that allows us to store and retreieve identifiers. It only needs two methods and is 
+a struct. This should make it easier to define scope for an indentifier. This will be 
+handled later when we deal with `function`s and calls.
+
+Once this was in place, the evaluator was updated to accept an `env`iornment variable. That's it.o
+
+[Commit:caa13eb](https://github.com/Cijin/go-interpreter/commit/caa13eba731baaea2ed0f443a455cc7aad719088)
