@@ -1,0 +1,77 @@
+# 17th November
+
+## Function Literals
+
+Since everything in the monkey programming language is an object, functions will 
+be the same. Functions are expressions in monkey, i.e. they evaluate to a value, 
+which you can assign to an identifier.
+
+ex: `let x = fn(y) { return y };`
+
+We add support for evaluating function literals to our evaluator, which then turns the `ast.FunctionLiteral` 
+into an object representation. Which looks like this:
+
+```go
+type Function struct {
+  Parameters []*ast.Identifier
+  Body []*ast.BlockStatement
+  Env *Environment
+}
+```
+
+We use the `env` in the scope of the evaluator when we come across the function literal.
+
+## Closure
+
+Before going ahead with evaluating call expressions out `env` needs to be able to limit scope 
+of the `identifiers` that are defined within the function so that they do not overwrite the 
+variables defined outside of the function.o
+
+To achieve this the `Environment` is extended to be enclosable, i.e. it can have an `outer`, 
+which is a pointer to an outer enviornment. So the `Environment` now looks like this:
+
+```go
+type Environment sturct {
+  ...
+  outer *Environment
+}
+```
+
+When looking up identifiers the `Get`ter (`env.Get(...)`), will first try to resolve the value 
+from the current scope and if it's not defined, it'll try to resolve the identifier from the outer 
+environment if one exists.
+
+## Call Expressions
+
+There are three steps to handle calls:
+
+1. Evaluate arguments
+
+Arguments are expressions and our evaluator already knows how to evaluate them. All 
+we need to do is ensure there are no errors and return the arguments as `[]Object`s.
+
+2. Extend Environment
+
+We need to create a `NewEnclosedEnvironment` and map the function parameters to it.
+
+3. Evaluate Function Body
+
+Now all that's left to do is evaluate the body, which is simply a `[]ast.BlockStatement`, 
+all we need to do is ensure we pass the correct envriornment, and we are done!
+
+
+That's it! We now have a basic programming language written from scratch. So if you 
+run the repl, the new function calls can be tested:
+
+
+```
+Welcome to monkey v0.0.1
+Press ctrl-d to exit.
+>> let newAdder = fn(x) { fn(y) { x + y } };
+>> let addTwo = newAdder(2)
+>> addTwo(3)
+5
+>>
+```
+
+[Commit:14db146](https://github.com/Cijin/go-interpreter/commit/14db146a0cfc794ec563c4be1d859f2eb4f2aa31)
