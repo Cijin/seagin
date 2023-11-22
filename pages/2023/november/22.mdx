@@ -1,0 +1,39 @@
+# 22nd November
+
+# Extending the interpreter
+
+For the most part, the interpreter is complete but not very useful as is. There are 
+few key things missing. Namely, support for strings, arrays & hashes. In this section will 
+be adding those in.
+
+
+## Strings
+
+Strings, are not very different from integer literals and can use the `string` type of the underlying 
+language (in our case go).
+
+The steps were the same as the ones we followed for adding support for integer literals. But, I realized 
+that I had forgotten what some of the code did :D, no surprise there I suppose, as the lexer was written 
+almost two months ago.
+
+### Adding support for strings in the lexer
+
+Currently, if you have a look at the `lexer.go`. You'll notice that invalid strings are not caught:
+
+```go
+		if l.ch == '"' || l.ch == 0 {
+			break
+		}
+```
+
+This will be improved next, so that the parser can return an error instead. Once that's done, I will look 
+into escape sequences. `\, \t, \n`
+
+
+### Parsing strings
+
+Currently, parsing the string is really simple. All we did is register a prefix to parse string literals. 
+All this parsing function does is return an ast. This will be improved upon, to return errors for strings 
+that are not closed.
+
+[Commit:428c9e4](https://github.com/Cijin/go-interpreter/commit/428c9e48d8d51032be188a6d4378ada8fc39cfce)
