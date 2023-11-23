@@ -1,0 +1,41 @@
+# 23rd November
+
+# Extending the interpreter: Strings Part 2
+
+Strings that are not terminated properly will now throw an error. I'm yet to parse 
+strings with `\`, `\n`, `\r`, `\t`. Not entirely sure how to achieve this, will need 
+to look into it or ask for help.
+
+## Evaluating Strings
+
+This would be a lot more challenging if were writing the interpreter in `C`. Luckily, `go` 
+has support for string and this makes evaluation way more easier. Although, at some point, 
+I like to write the interpreter in `C`, should be fun.
+
+So, all that there was to do is, when a string literal is encountered, convert it to 
+a string object.
+
+## Evaluating String Expressions
+
+Also, very easy due to the same reason as above. So monkey now supports `+`, `==`, and 
+`!=` on strings.
+
+So, we can now do things like:
+
+```
+let s = "hello" + " " + "world";
+print(s);
+
+>> hello world
+```
+
+Looks trivial, but felt amazing to see the test pass for this. It's funny to think 
+what programmers think is amazing.
+
+
+Operator support:
+[Commit:58875e9](https://github.com/Cijin/go-interpreter/commit/58875e9df511303393acf975e98cc83708986c12)
+
+
+String evaluation:
+[Commit:7d47608](https://github.com/Cijin/go-interpreter/commit/7d4760850507e2641d3c648f10f3138cdf55848e)
