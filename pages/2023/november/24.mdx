@@ -1,0 +1,23 @@
+# 24th November
+
+# Built in function: `len`
+
+Getting on this interpreter journey has been refreshing, I was feeling uninspired 
+about writing code for the last year or so. The last couple of months have flipped 
+it, and I can't wait to get to my desk.
+
+I've digressed.
+
+So `builtins` are interesting. They are like regular function but defined within the 
+evaluator. In other languages you could use a `for` loop to get the length but since 
+we have not defined loops this would be the only way to get a length of a string.
+
+This is interesting because, if you consider things you use to make your code useful 
+like listening to a port `server.ListenAndServe`. You are using a method that intern uses an interface 
+`net` to communicate to underlying network i/o on your computer. My point is, if you had 
+to build this interface yourself the language wouldn't be very useful (for most people).
+
+Although, `len` is a very simple `builtin` function. It was interesting to know 
+how one would add it to a programming language.
+
+[Commit:65ed80d](https://github.com/Cijin/go-interpreter/commit/65ed80d71d1eb71ff04c58061c6159a68242836b)
