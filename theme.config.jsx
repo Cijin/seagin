@@ -2,6 +2,13 @@ import Image from 'next/image';
 import logoSvg from "./public/seagin.svg";
 
 export default {
+    head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:title" content="Seagin" />
+      <meta property="og:description" content="Striving for deep understanding" />
+    </>
+  ),
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Seagin'
