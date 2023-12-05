@@ -1,5 +1,6 @@
 {
   "script": "Script",
   "server": "Server",
-  "htmx": "Htmx"
+  "htmx": "Htmx",
+  "itWorks": "It Works!"
 }
