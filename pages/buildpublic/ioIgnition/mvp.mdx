@@ -1,6 +1,6 @@
 # Finishing the MVP
 
-In all fairness, I really enjoy building and getting stuck, then unstuck. It's enjoyable, 
+I really enjoy building, getting stuck, and then unstuck. That last part is the best. It's enjoyable, 
 challenging and absolutely exhilarating to see the goal you were trying to achieve. It's 
 crazy to think that two weeks ago, this was just a curiosity. I was looking at an analytics dashboard 
 and I was like, "I wonder how it all works?." Then I was like, "Can I build it?", I think I've 
@@ -14,17 +14,17 @@ This one I was immediately sure, on how to do it. Send a request when a user ent
 site, send one when they exit the page. Easy, right? It wasn't, what I forgot to take into 
 account was that browser cancels all outstanding requests when the code is unmounted, ex: user 
 closes the tab. Maybe this was a skill issue, but I've never had to worry about a request failing 
-post code being unmounted before. 
+post code being unmounted. 
 
 ## Getting Unstuck
 
 It's hard when you don't have the right vocabulary to explain the problem to a search engine or AI. 
 Took me a couple of days, as I benched this issue to the side to tackle it later. That was the 
-smartest move on my part. That I've done before, I've often done a task that I know I can do, when 
+smartest move on my part. This I've done before, I've often pivoted to a task that I know I can do, when 
 I'm stuck on something I have no clue about.
 
 When I did return to this task, my mindset was different. I was no longer using the same words to 
-describe my problem. My search provided better results and eventually ChatGPT brought to my attention 
+describe my problem. My search provided better results and eventually gipty brought to my attention 
 about an API that does exactly this, it was called [navigator.sendBeacon()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon).
 Although, I did not end up using this API, as I read the documentation I figured out 
 how I could do this by updating my request with one simple parameter.
@@ -32,7 +32,7 @@ how I could do this by updating my request with one simple parameter.
 This parameter was called `keepalive`, which then would tell the browser that this request should 
 be kept alive, when page looses visibility. As I'm writing this, I've realized I've not handled 
 the scenario where the page is visible again, i.e. uses switches tabs and returns. One more item 
-for the shipping [tasks](https://github.com/Cijin/ioignition/issues/17).
+for the [shipping tasks](https://github.com/Cijin/ioignition/issues/17).
 
 ## What's next?
 
@@ -41,10 +41,11 @@ more person. You see, programmers are great at building things, not so great at 
 the other thing I'm trying to learn. To sell my software. To be sustainable and be able to build the 
 things you want, when you want, as you want, you need money. You can either get this money from the outside 
 or you can learn to sell. I like the freedom of building things as I want, dictating how it should 
-work, what it does and what it will never do.
+work, what it does and what it will never do. Like violate privacy of it's users in the case of 
+ioIgnition.
 
 The goal when building `ioigntion` was to build a privacy first, minimal analytics tool that does 
 not slow down your webpage. Currently the script is at `3.8kb`, without any optimizations.
 
 As for what is next, I'll be working on the finishing touches and completing the items 
-on the list above and then talking about it.
+on the list above and then talking about this to people and see what they think about it.
