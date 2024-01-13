@@ -13,10 +13,11 @@ type ResponseData = {
   error: string;
 };
 
-export default async function Subscribe(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
+  console.log(req.body)
   try {
     // Extract email from the request body
     const { email } = req.body as RequestBody;
