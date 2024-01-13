@@ -64,7 +64,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-zinc-950" aria-labelledby="footer-heading">
+    <footer className="bg-zinc-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -93,7 +93,7 @@ export default function Footer() {
             />
             <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
               <button
-                className="flex w-full items-center justify-center rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400"
+                className="flex w-full items-center justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-400"
               >
                 Subscribe
               </button>
