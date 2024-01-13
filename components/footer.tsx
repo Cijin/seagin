@@ -122,7 +122,7 @@ function Alert({ message, isError}: { message: string ,isError: boolean}) {
           <div className="flex">
             <div className="ml-3">
               <h3 className="text-sm font-medium text-red-800">Error Subsribing</h3>
-              <div className="mt-2 text-sm text-yellow-red">
+              <div className="mt-2 text-sm text-red-700">
                 <p>
                   {message}
                 </p>
@@ -131,11 +131,11 @@ function Alert({ message, isError}: { message: string ,isError: boolean}) {
           </div>
         </div>
         :
-        <div className="rounded-md bg-red-100 p-4">
+        <div className="rounded-md bg-emerald-100 p-4">
           <div className="flex">
             <div className="ml-3">
-              <h3 className="text-sm font-medium text-red-800">Success</h3>
-              <div className="mt-2 text-sm text-red-700">
+              <h3 className="text-sm font-medium text-emerald-800">Success</h3>
+              <div className="mt-2 text-sm text-emerald-700">
                 <p>
                   {message}
                 </p>
