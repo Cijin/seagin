@@ -1,5 +1,4 @@
 import React, { ChangeEvent, FormEvent } from 'react'
-import { kv } from "@vercel/kv";
 
 const navigation = {
   social: [
@@ -37,7 +36,16 @@ export default function Footer() {
     e.preventDefault()
 
     try {
-      await kv.set(email, 'subscribed');
+      const response = await fetch('/api/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      await response.json();
+
       setMessage('Thank you for subscribing!');
       setIsError(false);
     } catch (error) {
