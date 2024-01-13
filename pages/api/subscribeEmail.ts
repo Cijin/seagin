@@ -17,23 +17,15 @@ export default async function Subscribe(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) {
-  if (req.method === 'POST') {
-    try {
+  try {
+    // Extract email from the request body
+    const { email } = req.body as RequestBody;
 
-      // Extract email from the request body
-      const { email } = req.body as RequestBody;
+    // Save the email in KV
+    await kv.set(email, 'subscribed');
 
-      // Save the email in KV
-      await kv.set(email, 'subscribed');
-
-      res.status(200).json({ message: 'Email saved successfully' });
-    } catch (error) {
-      res.status(500).json({ error: 'Error saving email' });
-    }
-  } else {
-    // Handle any non-POST requests
-    res.setHeader('Allow', ['POST']);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    res.status(200).json({ message: 'Email saved successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error saving email' });
   }
-}
-
+} 
