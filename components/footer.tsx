@@ -41,7 +41,6 @@ export default function Footer() {
       setMessage('Thank you for subscribing!');
       setIsError(false);
     } catch (error) {
-      console.error(error)
       setMessage('An error occurred. Please try again later.');
       setIsError(true); 
     }
