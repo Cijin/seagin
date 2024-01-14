@@ -1,0 +1,67 @@
+# Representational State Transfer: REST
+
+Rest is commonly associated with `JSON` API's, if that's what you thought REST was, you are not alone. I was under the same impression. Turns out it has nothing to do with `JSON` API's. I found it hard to believe till I saw [Roy Fielding's dissertation](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm#sec_5_1_2) on the topic, as I was reading through the book. Also, it is discussed to a network architecture. A way to architect distributed systems. 
+
+There are few core concepts to REST, as outlined in the dissertation:
+
+## 1. It is a client server architecture
+
+Any web application no matter how it is designed, fulfills this requirement.
+
+## 2. It must be stateless
+
+This one is kinda tricky, as it means that a request should have all the information associated with it for the server to be able to respond to the request. This constraint was hard not to violate as I was building [ioigntion](https://ioignition.com/), which is the first production app I built using HTMX. As some requests rely on a session cookie, which has other information attached to it. Although the violation of this rule is quite common across most web application and has been necessary across many web applications.
+
+## 3. It must allow for caching
+
+HTTP already has a sophisticated caching mechanism, which is supported via the use of request header.
+
+## 4. It must have a *uniform interface*
+
+There are four sub-constraints that together form the uniform constraint. Together these four interfaces provide much of the flexibility and simplicity to a hypermedia system. These are:
+
+### a. Identification of resources
+
+In hypermedia, this is provided by a uniform resource locator or URL. A URL is a sophisticated piece of technology that allows for the identification of a resource on the web. A resource in a RESTful system is anything that can be referenced by a URL (the hypermedia reference).
+
+### b. Manipulation of a resource through representations
+
+I'm not exactly sure, what this meant. It has something to do with data and the meta data about the data in a request, if that makes any sense. You'll have to read it yourself. You can find details on it [here](https://hypermedia.systems/hypermedia-systems/#_rest).
+
+### c. Self-descriptive messages
+
+Now this one I understand. It means all the information required to display and interact with the data, should be part of the data. There should be no "side effects". As an example, consider the `<a>` tag:
+
+```html
+<a href="/terms-of-service">Terms of Service</a>
+```
+
+The tag comes with all the information to be part of the view and has all the information to act on an interaction from the user.
+
+### d. HATEOAS: Hypermedia as the engine of application state
+
+Handling state via hypermedia, makes things a lot more simpler. As any change in the server state is reflected directly in the view, there is no need to communicate changes to the server as it's visible. It's self documented. Ex:
+
+```html
+<div>Status: Archived</div>
+```
+
+Let's say the above is part of a broader feature that was implemented, there is no need communicate this, compare this to a JSON response:
+```json
+{
+  "status": "Archived"
+}
+```
+
+If the function consuming this JSON was not aware of this change, which would need to be communicated via an API doc, this feature would be missed, which on it's own is okay, would be worse if it was previously called `userStatus` and is now renamed to `status`. In which case, it would break your code.
+
+## 5. It is a layered system
+
+It's not very exciting and you can read about this in the book, if you wish to know more.
+
+## 6. Optionally, it can allow for Code-On-Demand, i.e., scripting
+
+This one is quite good, scripts were and still is a part of the RESTful model of the web. This is important, as the book is not anti JavaScript, just against the overuse of it. Which makes sense, as reading about hypermedia systems so far, has given me the understanding that hypermedia is capable of a lot and does a lot for you to make web applications robust and stable. Why not leverage this?
+
+
+That was quite an interesting section, more so because the web currently does support all the above constraints of a RESTful system. All these are naively supported by hypermedia systems and does not need to be re-created through JavaScript. JavaScript should add to hypermedia, not replace it. It makes web apps complicated, bloated. Changes are slow, and require more people to be experts in the front-end development. Which in turn leads us to the re-invent what hypermedia does. I know, cause that's what I did for the last three years as a React developer.
