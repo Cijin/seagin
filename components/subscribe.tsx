@@ -39,8 +39,8 @@ export default function Subscribe() {
   return (
     <div className="py-16 sm:py-24 lg:py-32">
       <div className="space-y-8">
-        <div className="max-w-xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:col-span-7">
-          <p className="inline sm:block lg:inline xl:block">Subscribe to my newsletter.</p>
+        <div className="max-w-xl text-3xl tracking-tight text-white sm:text-4xl lg:col-span-7">
+          <p className="inline font-bold sm:block lg:inline xl:block">Subscribe to my newsletter.</p>
           <p className="mt-4 text-sm leading-6">
             📅 Emails sent weekly
           </p>
