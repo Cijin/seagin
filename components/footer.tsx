@@ -35,8 +35,8 @@ const navigation = {
 }
 
 export default function Footer() {
-   const [email, setEmail] = React.useState('');
-    const [message, setMessage] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [message, setMessage] = React.useState('');
   const [isError, setIsError] = React.useState(false);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -71,7 +71,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-zinc-900" aria-labelledby="footer-heading">
+    <footer id="footer" className="bg-zinc-900" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -128,7 +128,7 @@ export default function Footer() {
   )
 }
 
-function Alert({ message, isError}: { message: string ,isError: boolean}) {
+export function Alert({ message, isError}: { message: string ,isError: boolean}) {
   return (
     <>
       {isError ?

@@ -6,5 +6,9 @@
   "2023": "2023",
   "notesToSelf": "Notes to Self",
   "readingList": "Reading List",
+  "subscribe":{
+    "title": "Subscribe",
+    "type": "page"
+  },
   "contact": "Contact"
 }
