@@ -2,26 +2,28 @@ import Image from 'next/image';
 import logoSvg from "./public/seagin.svg";
 
 export default {
-    head: (
+  head: (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="Seagin" />
       <meta property="og:description" content="Striving for deep understanding" />
+      <script data-domain="seagin.me" src="ioignition.com/js/script.js" />
+
     </>
   ),
   useNextSeoProps() {
     return {
       titleTemplate: 'Seagin | %s',
-      defaultTitle : 'Seagin',
+      defaultTitle: 'Seagin',
       description: "Join me on Seagin as I embark on building unique projects like a Golang interpreter and an analytics app. Discover insights and stories from an indie hacker's journey of building in public.",
-      canonical:"https://www.seagin.me/",
-      openGraph:{
+      canonical: "https://www.seagin.me/",
+      openGraph: {
         url: 'https://www.seagin.me/',
         title: 'Seagin - Building Golang Projects in Public',
-        description : "Join me on Seagin as I embark on building unique projects like a Golang interpreter and an analytics app. Discover insights and stories from an indie hacker's journey of building in public.",
+        description: "Join me on Seagin as I embark on building unique projects like a Golang interpreter and an analytics app. Discover insights and stories from an indie hacker's journey of building in public.",
         siteName: 'Seagin',
       },
-      robotsProps:{
+      robotsProps: {
         nosnippet: true,
         notranslate: true,
         noimageindex: true,
@@ -30,12 +32,12 @@ export default {
         maxImagePreview: 'none',
         maxVideoPreview: -1,
       },
-      twitter:{
+      twitter: {
         handle: '@cijincherian',
         site: '@cijincherian',
         cardType: 'summary_large_image',
       },
-      additionalMetaTags:[{
+      additionalMetaTags: [{
         property: 'dc:creator',
         content: 'seagin'
       }, {
@@ -45,7 +47,7 @@ export default {
         httpEquiv: 'x-ua-compatible',
         content: 'IE=edge; chrome=1'
       }],
-      additionalLinkTags:[
+      additionalLinkTags: [
         {
           rel: 'icon',
           href: 'https://www.seagin.me/favicon.ico',
