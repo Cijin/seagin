@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Footer from './components/footer'
 import logoSvg from "./public/seagin.svg";
 
 export default {
@@ -77,7 +78,7 @@ export default {
   project: {
     link: 'https://github.com/cijin/seagin'
   },
-  footer: { component: null },
+  footer: { component: Footer },
   feedback: {
     content: null
   },
