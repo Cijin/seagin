@@ -7,9 +7,7 @@ export default {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="Seagin" />
-      <meta property="og:description" content="Striving for deep understanding" />
-      <script data-domain="seagin.me" src="https://ioignition.com/js/script.js" />
-
+      <meta property="og:description" content="exploring my passions for building software" />
     </>
   ),
   useNextSeoProps() {
