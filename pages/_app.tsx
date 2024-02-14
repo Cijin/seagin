@@ -8,7 +8,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Script data-domain="seagin.me" src="https://ioignition.com/js/script.js" />
+      <Script defer data-domain="seagin.me" src="http://localhost:8080/js/script.js" />
+      <Script defer data-domain="seagin.me" src="http://localhost:8080/js/performance.js" />
       <Component {...pageProps} />
       <Analytics />
       <SpeedInsights />
