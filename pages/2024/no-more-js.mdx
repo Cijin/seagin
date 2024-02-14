@@ -1,0 +1,35 @@
+# Why I no longer use JavaScript frameworks 
+
+TLDR; the errors are not obvious and there is too much code for even the simplest things
+
+## Backstory
+
+I've always liked working on something for myself, a project, writing interpreters, or solving some [project euler](https://projecteuler.net/) questions. Mostly because I like making things, there some satisfaction of taking an idea from your head to and making it tangible. Most of my projects never really finished, the very few that did, had something in common. They were done within thirty days of me starting it. The interesting thing was that, once the initial idea had been completed, I could continue working on it a lot longer. I have experimented with a few stack for my development, with the goal being: to build things.
+
+Some of these tools were [NextJs](https://nextjs.org/), [AdonisJs](https://adonisjs.com/), [Express](https://expressjs.com/) with [React](https://react.dev/) and [tailwindcss](https://tailwindcss.com/). Now of all these tools, I still use NextJs for the blog that you are reading right now. It's super easy for me to write in markdown and publish the post within minutes. Also, one of the other tools I still use is tailwindcss, when it comes to writing css, it's the best.
+
+## Why change?
+
+As you can see, they are all JavaScript frameworks. Here are a few issues that I have with it:
+* The whole bundling thing
+* There are a lot of ways to do even the simplest things (import vs require as an example)
+* The amount of code to be written even for the simplest button is just silly (yes React)
+* I changed, I wanted my projects to provide value on the server side instead of the client
+* Don't even talk about testing
+* The errors are not obvious
+
+Of all the ones above, I'd like to talk about the error handling. I use Go now, and I've noticed people are not very happy with it's error handling, cause errors are values and you need to decide what to do with it. Contrary to JavaScript where the errors are not obvious at all. I'd rather be a bit bored and handle my errors where they happen instead of playing the guessing game in the future.
+
+For the longest time, I was like, it's just the way it is. It's something I've got figure out and get better at. Creating a website is not a one person job, it takes a team  with expertise in every aspect of the process. I'm so glad I was wrong.
+
+## Present day
+
+So, what magical software do I use to create my projects now?
+
+So currently I use [Go](https://go.dev/), [Htmx](https://htmx.org/), [AlpineJs](https://alpinejs.dev/) and trusty old html with tailwindcss. I'll be writing a detailed article on why specifically those tools.
+
+The main reason for this shift was the book [hypermedia systems](https://hypermedia.systems/). It showed me that there was a whole different way of doing things. A simpler way of doing things. I'm still pretty new to hypermedia driven applications approach of building things. I've still been able to move fast on my own. Which was my goal when I started learning about software. I wanted to make things.
+
+## No JavaScript at all?
+
+That would be silly, there is something JavaScript is really good at. Dom interactions. Everything else is a No! For interactions I still and will always use JavaScript, it's amazing at it. I have no beef with JavaScript, I'd just like to use it sparingly, for scripting on pages.
