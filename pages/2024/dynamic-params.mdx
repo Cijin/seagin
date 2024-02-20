@@ -1,0 +1,46 @@
+# Dynamically adding `params` to `hx-get` requests using AlpineJs
+
+Since yesterday, I've been trying to understand how to add `params` dynamically to an `hx-get` request. It has been a bit of a challenge, I have solved the problem but I'm not sure if it's the best way to do this. I'm hoping someone reading this could direct me to a better way of doing this.
+
+## Approach 1: Using `hx-params` (Couldn't get this working)
+
+This one seemed the most obvious, and my understanding is that you can filter the parameters sent in the Ajax request. I'm guessing it's filtered from the `URLSearchParams`, this is where I might have been wrong.
+
+This is what I tried:
+```html
+<section hx-params="period">
+	...
+	<article hx-get="/get-data" hx-trigger="load, params-updated"></article>
+	...
+</section>
+```
+
+Since, Alpine code was updating the URL search params, I assumed this would just work.
+
+My expectation was that, when the `params-updated` event was fired, a request would be sent with the updated param, in this case `period`. But it always kept sending:
+
+```
+GET /get-data?period=undefined
+```
+
+
+### Approach 2: Using `hx-include` 
+
+```html
+<section hx-include="[name='period']">
+	<input type="hidden" name="period" :value="params.period" />
+	...
+	<article hx-get="/get-data" hx-trigger="load, params-updated"></article>
+	...
+</section>
+```
+
+This does work, although I'm not a fan of using hidden inputs. The `:value` is just Alpine binding that dynamically updates the value.
+
+The best part is that since `hx-include`  is inherited and can be placed on a parent element, all the rest of the elements just work.
+
+## Open to Suggestions
+
+I looked around the internet, the best I could find was one that resembled similarly to the one above. Although, it still super simple and not a big deal, I was wondering if someone out there knew of a better way to achieve the same.
+
+Thank you for reading.
