@@ -6,6 +6,7 @@ import { getPosts } from './posts';
 export const generateFeeds = async () => {
   const domain = process.env.NEXT_PUBLIC_MAIN_DOMAIN || process.env.VERCEL_URL;
   const posts = await getPosts();
+
   const siteURL = `https://${domain}`;
   const date = new Date();
   const author = {
@@ -13,7 +14,6 @@ export const generateFeeds = async () => {
     email: 'cijin@seagin.me',
     link: 'https://seagin.me',
   };
-
 
   const feed = new Feed({
     title: 'Cijin (SeaGin) Cherian | Software Developer',
@@ -34,6 +34,7 @@ export const generateFeeds = async () => {
 
   for (const post of posts) {
     const url = `${siteURL}/${post.slug}`;
+    console.log(post)
 
     feed.addItem(
       {

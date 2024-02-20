@@ -8,12 +8,12 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { generateFeeds } from '../utils/feed'
 
 export const getStaticProps = async () => {
-  if (process.env?.VERCEL) {
-    await generateFeeds();
-  }
+  //if (process.env?.VERCEL) {
+  await generateFeeds();
+  //}
+  //
+  return {}
 };
-
-// ...
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
