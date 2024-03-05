@@ -18,8 +18,8 @@ export const getStaticProps = async () => {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Script defer data-domain="seagin.me" src="http://localhost:8080/js/script.js" />
-      <Script defer data-domain="seagin.me" src="http://localhost:8080/js/performance.js" />
+      <Script defer data-domain="seagin.me" src="https://www.ioignition.com/js/script.js" />
+      <Script defer data-domain="seagin.me" src="https://www.ioignition.com/js/performance.js" />
       <Component {...pageProps} />
       <Analytics />
       <SpeedInsights />
